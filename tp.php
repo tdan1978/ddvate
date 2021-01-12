@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (!$_SESSION['userid']) {
+    die();
+}
 $Employeeid  = $_POST['Employeeid'];
 $zzsz = $_POST['zzsz'];
 $zysy = $_POST['zysy'];
@@ -11,16 +14,13 @@ $Creattime = date('Y-m-d h:i:s');
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
 $dept = $_SESSION['deptoder'];
-
-
-$serve = 'localhost:3306';
-$dbusername = 'username';
-$password = 'password';
-$dbname = 'dbname';
-
+$serve = '';
+$dbusername = '';
+$password = '';
+$dbname = '';
 $mysqli = new Mysqli($serve, $dbusername, $password, $dbname);
 if ($mysqli->connect_error) {
-	die('connect error:' . $mysqli->connect_errno);
+    die('connect error:' . $mysqli->connect_errno);
 }
 $sql = "insert into manager_score (  
 `Employeeid`,
@@ -47,13 +47,9 @@ $sql1 = "insert into finish_list (
 '$username',
 '$dept',
 '$Employeeid')";
-
-
-
 if ($mysqli->query($sql) === TRUE and $mysqli->query($sql1) === TRUE) {
-	echo "提交成功";
+    echo "提交成功";
 } else {
-	echo "提交失败，错误信息:" . $mysqli->error;
+    echo "提交失败，错误信息:" . $mysqli->error;
 }
-
 $mysqli->close;
