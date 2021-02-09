@@ -3,10 +3,11 @@ session_start();
 if (!$_SESSION['userid']) {
     die();
 }
+if($_SESSION['userid'] !="" && $_SESSION['userid'] !=""){
+	die();
+}
 
 ?>
-
-
 <!doctype html>
 <html>
 
@@ -19,6 +20,10 @@ if (!$_SESSION['userid']) {
     <link rel="stylesheet" href="lib/style.css">
     <link rel="stylesheet" href="lib/zzsc-demo.css">
     <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
         .name {
             width: 5em;
             height: 36px;
@@ -26,7 +31,6 @@ if (!$_SESSION['userid']) {
             float: left;
             line-height: 36px;
         }
-
         .dept {
             width: 10em;
             height: 36px;
@@ -34,7 +38,6 @@ if (!$_SESSION['userid']) {
             float: left;
             line-height: 36px;
         }
-
         .total {
             width: 5em;
             height: 36px;
@@ -42,7 +45,6 @@ if (!$_SESSION['userid']) {
             float: left;
             line-height: 36px;
         }
-
         .count {
             width: 5em;
             height: 36px;
@@ -50,7 +52,6 @@ if (!$_SESSION['userid']) {
             float: left;
             line-height: 36px;
         }
-
         .managerlist,
         .managerhead,
         .depthead,
@@ -59,7 +60,6 @@ if (!$_SESSION['userid']) {
             display: inline-flex;
             border-bottom: 1px solid;
         }
-
         .detailhead .detail {
             width: 15vw;
             height: 40px;
@@ -69,7 +69,6 @@ if (!$_SESSION['userid']) {
             display: table-cell;
             line-height: 40px;
         }
-
         .detaillist .detail {
             width: 15vw;
             height: 40px;
@@ -86,18 +85,15 @@ if (!$_SESSION['userid']) {
             text-shadow: 1px 1px 1px #888;
 
         }
-
         .detaillist {
             margin: auto;
             display: table;
         }
-
         .voteuserlist {
             border-bottom: 1px solid #ddd;
             display: table;
             margin: auto;
         }
-
         .hsycms-model {
             position: fixed;
             z-index: 3333;
@@ -116,25 +112,21 @@ if (!$_SESSION['userid']) {
             height: 100%;
 
         }
-
         .hsycms-model .hscysm-model-title {
             padding-bottom: 0px;
             margin-bottom: 0px;
         }
-
         .hsycms-model-btn {
             position: absolute;
             bottom: 0px;
             width: 100%;
         }
-
         .hsycms-model .hsycms-model-content {
             overflow: auto;
             height: 85%;
             max-height: 100%;
             padding-top: 0px;
         }
-
         .detailhead {
             display: table;
             margin: auto;
@@ -142,15 +134,12 @@ if (!$_SESSION['userid']) {
             height: 40px;
             font-weight: 100;
         }
-
         .hscysm-model-title {
             margin-bottom: 10px;
         }
-
         .voteuserlist:first {
             margin-top: 30px;
         }
-
         .finishname {
             width: 45vmin;
             height: 40px;
@@ -161,7 +150,6 @@ if (!$_SESSION['userid']) {
             line-height: 40px;
 
         }
-
         .yesno {
             width: 45vmin;
             height: 40px;
@@ -172,14 +160,13 @@ if (!$_SESSION['userid']) {
             line-height: 40px;
 
         }
-
         .hsycms-model .hsycms-model-btn button:last-child {
             color: #ffffff;
             background-color: #f00;
         }
 
         .deptpjname {
-            width: 7em;
+            width: 8.5em;
             height: 36px;
             display: block;
             float: left;
@@ -187,7 +174,7 @@ if (!$_SESSION['userid']) {
         }
 
         .YX {
-            width: 4.5em;
+            width: 4.2em;
             height: 36px;
             display: block;
             float: left;
@@ -196,7 +183,7 @@ if (!$_SESSION['userid']) {
         }
 
         .HG {
-            width: 4.5em;
+            width: 4.2em;
             height: 36px;
             display: block;
             float: left;
@@ -205,7 +192,7 @@ if (!$_SESSION['userid']) {
         }
 
         .JBHG {
-            width: 4.5em;
+            width: 4.2em;
             height: 36px;
             display: block;
             float: left;
@@ -214,7 +201,7 @@ if (!$_SESSION['userid']) {
         }
 
         .BHG {
-            width: 4.5em;
+            width: 4.2em;
             height: 36px;
             display: block;
             float: left;
@@ -248,7 +235,7 @@ if (!$_SESSION['userid']) {
             //return;
             //	}
             // dd.runtime.permission.requestAuthCode({
-            // corpId: "ding953111b3fd867b24a1320dcb25e91351",
+            // corpId: "corpId",
             //onSuccess: function (res) {
 
             // 调用成功时回调
@@ -278,12 +265,11 @@ if (!$_SESSION['userid']) {
                                 content = content + '<div class="deptlist"><span class=" deptpjname">' + item.deptname + '</span><span class="deptpjres YX"><span class="deptcount">' + item.YX + '</span><span class="bfb">' + Percentage(item.YX, zs) + '</span></span><span class="deptpjres HG"><span class="deptcount">' + item.HG + '</span><span class="bfb">' + Percentage(item.HG, zs) + '</span></span><span class="deptpjres JBHG"><span class="deptcount">' + item.JBHG + '</span><span class="bfb">' + Percentage(item.JBHG, zs) + '</span></span><span class="deptpjres BHG"><span class="deptcount">' + item.BHG + '</span><span class="bfb">' + Percentage(item.BHG, zs) + '</span></span></span></div>'
                             });
                             who.next("p").html(content);
-
                         } else {
-                            var content = '<div class="managerhead"><span class="name">姓名</span><span class="dept">部门</span><span class="count">已投</span><span class="total">得分</span></div>';
+                            var content = '<div class="depthead"><span class="deptpjname">姓名</span><span class="deptpjres YX">优秀</span><span class="deptpjres HG">合格</span><span class="deptpjres JBHG">基本合格</span><span class="deptpjres BHG">不合格</span></div>'
                             $.each(data.data, function(i, item) {
-                                content = content + '\
-							<div class="managerlist" id="' + item.Employeeid + '"><span class="name">' + item.name + '</span><span class="dept">' + item.dept + '</span><span class="count">' + item.count + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 15h18v2H3v-2zm8-5h10v2H11v-2zm0-5h10v2H11V9zm-8 3.5L7 9v7l-4-3.5z" fill="rgba(255,255,255,0.57)"/></svg></span><span class="total">' + parseFloat(item.total).toFixed(2) + '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path fill="none" d="M0 0h24v24H0z"/><path d="M3 4h18v2H3V4zm0 15h18v2H3v-2zm8-5h10v2H11v-2zm0-5h10v2H11V9zm-8 3.5L7 9v7l-4-3.5z" fill="rgba(255,255,255,0.57)"/></svg></span></div>';
+                                var zs = Number(item.YX) + Number(item.HG) + Number(item.JBHG) + Number(item.BHG);
+                                content = content + '<div class="deptlist voteuser" id="'+item.Employeeid+'" value="'+item.dept+'"><span class=" deptpjname">' + item.dept+item.name + '</span><span class="deptpjres YX"><span class="deptcount">' + item.YX + '</span><span class="bfb">' + Percentage(item.YX, zs) + '</span></span><span class="deptpjres HG"><span class="deptcount">' + item.HG + '</span><span class="bfb">' + Percentage(item.HG, zs) + '</span></span><span class="deptpjres JBHG"><span class="deptcount">' + item.JBHG + '</span><span class="bfb">' + Percentage(item.JBHG, zs) + '</span></span><span class="deptpjres BHG"><span class="deptcount">' + item.BHG + '</span><span class="bfb">' + Percentage(item.BHG, zs) + '</span></span></span></div>'
                             });
                             who.next("p").html(content);
                             $(".managerlist").children(".total").click(function() {
@@ -292,13 +278,12 @@ if (!$_SESSION['userid']) {
                                 $(".hscysm-model-title").html("");
                                 total($(this).parent().attr("id"), $(this).prevAll(".name").text());
                             });
-                            $(".managerlist").children(".count").click(function() {
+                            $(".voteuser").click(function() {
                                 $(".hsycms-model-content").html("");
 
                                 $(".hscysm-model-title").html("");
-                                voteuser($(this).parent().attr("id"), $(this).prevAll(".dept").text());
+                                voteuser($(this).attr("id"), $(this).attr("value"));
                             });
-
                         }
                         //hsycms.alert('model');
                     },
@@ -322,9 +307,6 @@ if (!$_SESSION['userid']) {
                 $('p').not($(this).next()).slideUp('fast');
             });
         });
-
-
-
         function alert(txt) {
             hsycms.alert('alert', txt, function() {
                 hsycms.close('alert');
@@ -389,13 +371,6 @@ if (!$_SESSION['userid']) {
                             })
                         }
                     });
-
-
-
-
-
-
-
                 },
                 error: function(e) {
                     alert("no");
@@ -404,8 +379,6 @@ if (!$_SESSION['userid']) {
                 }
             });
             hsycms.alert('model');
-
-
         }
 
         function voteuser(Employeeid, deptname) {
@@ -447,9 +420,6 @@ if (!$_SESSION['userid']) {
 
                     });
 
-
-
-
                 },
                 error: function(e) {
                     alert("no");
@@ -458,11 +428,7 @@ if (!$_SESSION['userid']) {
                 }
             });
             hsycms.alert('model');
-
-
         }
-
-
         function Percentage(number1, number2) {
             return (Math.round(number1 / number2 * 10000) / 100.00 + "%"); //小数点后两位百分比
         }
@@ -473,12 +439,12 @@ if (!$_SESSION['userid']) {
     <div class="zzsc-container">
         <section class="accordion">
 
-            <div class="item depttype" id="calss1z">
+            <div class="item depttype" id="class1z">
                 <img src="img/Location-Pin.png" alt="">
                 <h3>一类支行正职</h3>
             </div>
             <p></p>
-            <div class="item depttype" id="calss2z">
+            <div class="item depttype" id="class2z">
                 <img src="img/Headphones.png" alt="">
                 <h3>二类支行正职</h3>
             </div>
@@ -520,7 +486,6 @@ if (!$_SESSION['userid']) {
             <p></p>
         </section>
     </div>
-
     <div class="hsycms-model-mask" onclick="hsycms.closeAll()" id="mask-model"></div>
     <div class="hsycms-model hsycms-model-model" id="model">
         <div class="hscysm-model-title">详情</div>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!$_SESSION['userid']) {
+if(!$_SESSION['userid']){
 	die();
 }
 $deptscore = $_POST['depttp'];
@@ -8,10 +8,14 @@ $deptname = $_POST['deptname'];
 $Creattime = date('Y-m-d h:i:s');
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
-$serve = '';
-$dbusername = '';
-$password = '';
-$dbname = '';
+//$dept = $_SESSION['deptoder'];
+
+
+$serve = 'server';
+$dbusername = 'dbusername';
+$password = 'password';
+$dbname = 'dbname';
+
 $mysqli = new Mysqli($serve, $dbusername, $password, $dbname);
 if ($mysqli->connect_error) {
 	die('connect error:' . $mysqli->connect_errno);

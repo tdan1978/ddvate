@@ -5,7 +5,46 @@ include "TopSdk.php";
 date_default_timezone_set('Asia/Shanghai');
 //特殊用户数组。
 $moveuser = array(
-    "a" => "b"
+    
+    "05493646531068118"=>	"纪检监察室",
+"0224115525794475"=>	"风险合规部",
+"25336341621279993"=>	"风险合规部",
+"252933686621470272"=>	"风险合规部",
+"254733061423991059"=>	"风险合规部",
+"3332305245950408"=>	"广泰支行",
+"253303582924151135"=>	"广泰支行",
+"254659483221347591"=>	"广泰支行",
+"253602152319978109"=>	"安全保卫部",
+"121934320335548774"=>	"营业部",
+"2162301354772389"=>	"开发区支行",
+"253367412426137920"=>	"站前支行",
+"2533024432100080578"=>	"东北城支行",
+"253433121623280718"=>	"开原支行",
+"253322461523118652"=>	"广合支行",
+"144118144732205303"=>	"营业部",
+"254525656729070092"=>	"营业部",
+"245828313326020088"=>	"开发区支行",
+"241719623026098171"=>	"铁西支行",
+"241732506423827254"=>	"审计部",
+"0237363949776243"=>	"信息科技部",
+"1133164737996542"=>	"网络金融部",
+"2459022447771137"=>	"昌图支行",
+"1746156125769095"=>	"计划财务部",
+"0239594055858277"=>	"昌兴支行",
+"246116435123114282"=>	"红旗支行",
+"24611728641181593"=>	"站前支行",
+"2540324437249164092"=>	"开发区支行",
+"080864175629108027"=>	"开发区支行",
+"253524214721863688"=>	"铁岭县支行",
+"2534211420688241"=>	"岭东支行",
+"2536244958319929803"=>"风险合规部",
+"202614675723686683"=>"风险合规部",
+"0304152018957497"=>"风险合规部",
+"2514131923673242"=>"风险合规部",
+"253409595626702837"=>"风险合规部",
+"2463474448701205"=>"风险合规部",
+"253441045827214748"=>"风险合规部",
+"016854431021464151"=>"风险合规部"
 );
 
 //获取access_token，每7000s重新获取
@@ -14,8 +53,8 @@ $tokenFile = "./access_token.htaccess";
 $data = json_decode(file_get_contents($tokenFile));
 if ($data->expire_time < time() || !$data->expire_time) {
     $req = new OapiGettokenRequest;
-    $req->setAppkey("");
-    $req->setAppsecret("");
+    $req->setAppkey("Appkey");
+    $req->setAppsecret("Appsecret");
     $resp = $c->execute($req, $access_token, "https://oapi.dingtalk.com/gettoken");
     $token = json_decode(json_encode($resp), true);
     $access_token = $token['access_token'];
@@ -56,10 +95,10 @@ $_SESSION['token'] = $access_token;
 $_SESSION['userid'] = $userid['userid'];
 $_SESSION['username'] = $userinfo['name'];
 $_SESSION['deptoder'] = $deptname;
-$serve = '';
-$dbusername = '';
-$password = '';
-$dbname = '';
+$serve = 'server';
+$dbusername = 'dbusername';
+$password = 'password';
+$dbname = 'dbname';
 $mysqli = new Mysqli($serve, $dbusername, $password, $dbname);
 if ($mysqli->connect_error) {
     die('connect error:' . $mysqli->connect_errno);

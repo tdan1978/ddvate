@@ -4,15 +4,11 @@ if (!$_SESSION['userid']) {
     die();
 }
 $Employeeid  = $_POST['Employeeid'];
-$zzsz = $_POST['zzsz'];
-$zysy = $_POST['zysy'];
-$kxjc = $_POST['kxjc'];
-$tdzx = $_POST['tdzx'];
-$tdjs = $_POST['tdjs'];
-$ktcx = $_POST['ktcx'];
+$tpresult = $_POST['tpresult'];
 
 
-echo ("aaaa".$Employeeid.$zysy.$zzsz);
+
+//echo ("aaaa".$Employeeid.$zysy.$zzsz);
 $Creattime = date('Y-m-d h:i:s');
 $userid = $_SESSION['userid'];
 $username = $_SESSION['username'];
@@ -25,21 +21,8 @@ $mysqli = new Mysqli($serve, $dbusername, $password, $dbname);
 if ($mysqli->connect_error) {
     die('connect error:' . $mysqli->connect_errno);
 }
-$sql = "insert into manager_score (  
-`Employeeid`,
-`zzsz`,
-`zysy`,
-`kxjc`,
-`tdzx`,
-`tdjs`,
-`ktcx`) values( 
-'$Employeeid',
-'$zzsz',
-'$zysy',
-'$kxjc',
-'$tdzx',
-'$tdjs',
-'$ktcx')";
+$sql = "insert into manager_result (  
+`Employeeid`,`tpresult`) values( '$Employeeid','$tpresult')";
 
 $sql1 = "insert into finish_list (  
 `userid`,

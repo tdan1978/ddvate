@@ -8,13 +8,13 @@ include "TopSdk.php";
 date_default_timezone_set('Asia/Shanghai');
 $Employeeid = $_GET['Employeeid'];
 $deptname = $_GET['deptname'];
-if ($_SESSION['userid'] != "") {
-    die();
+if ($_SESSION['userid'] != " ") {
+    //die();
 }
-$serve = '';
-$username = '';
-$password = '';
-$dbname = '';
+$serve = 'server';
+$dbusername = 'dbusername';
+$password = 'password';
+$dbname = 'dbname';
 $mysqli = new Mysqli($serve, $username, $password, $dbname);
 if ($mysqli->connect_error) {
     die('connect error:' . $mysqli->connect_errno);
